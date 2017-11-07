@@ -16,6 +16,11 @@
 odds_ratio <- function(a,b,c,d,ci = FALSE,alpha = 0.05)
 {
 
+  if(!all(a,b,c,d) > 0)
+  {
+    stop("Must have positive cell counts")
+  }
+
   or = (a*d)/(b*c)
 
   if(!ci)

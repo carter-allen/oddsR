@@ -14,6 +14,12 @@
 
 odds_ratio_CMH <- function(a,b,c,d, ci = FALSE, alpha = 0.05)
 {
+
+  if(!all(a,b,c,d) > 0)
+  {
+    stop("Must have positive cell counts")
+  }
+
   num = (a[1]*d[1])/sum(a[1],b[1],c[1],d[1]) + (a[2]*d[2])/sum(a[2],b[2],c[2],d[2])
 
   denom = (b[1]*c[1])/sum(a[1],b[1],c[1],d[1]) + (b[2]*c[2])/sum(a[2],b[2],c[2],d[2])
