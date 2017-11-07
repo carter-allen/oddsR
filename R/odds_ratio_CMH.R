@@ -12,7 +12,7 @@
 #' @examples
 #' odds_ratio(c(30,40),c(20,40),c(50,10),c(10,50))
 
-odds_ratio_CMH <- function(a,b,c,d, ci = FALSE, alpha = 0.05)
+odds_ratio_CMH <- function(a,b,c,d, ci = FALSE, alpha = 0.05,cor = FALSE)
 {
 
   if(!all(c(a,b,c,d)>0))
@@ -34,6 +34,6 @@ odds_ratio_CMH <- function(a,b,c,d, ci = FALSE, alpha = 0.05)
     arr <- array(c(a[1],b[1],c[1],d[1],
                    a[2],b[2],c[2],d[2]),
                  dim = c(2,2,2))
-    return(mantelhaen.test(arr,conf.level = alpha)$conf.int)
+    return(mantelhaen.test(arr,conf.level = alpha, correct = cor)$conf.int)
   }
 }
