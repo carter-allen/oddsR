@@ -13,7 +13,7 @@
 #' odds_ratio(30,40,10,50)
 #' odds_ratio(30,40,10,50,ci = TRUE)
 
-odds_ratio <- function(a,b,c,d,alpha = 0.05)
+odds_ratio <- function(a,b,c,d,ci = FALSE,alpha = 0.05)
 {
 
   or = (a*d)/(b*c)
