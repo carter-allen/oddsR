@@ -7,6 +7,7 @@
 #' @param d A vector of the exposed - disease - count for each stratum
 #' @param ci Return a confidence interval instead of point estimate
 #' @param alpha The confidence level of the interval
+#' @param cor Continuity correction
 #' @keywords odds-ratio
 #' @export
 #' @examples

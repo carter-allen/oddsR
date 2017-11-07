@@ -4,7 +4,7 @@
 \alias{odds_ratio_CMH}
 \title{A function for calculating Cochran–Mantel–Haenszel odds ratios for across 2 strata}
 \usage{
-odds_ratio_CMH(a, b, c, d, ci = FALSE, alpha = 0.05)
+odds_ratio_CMH(a, b, c, d, ci = FALSE, alpha = 0.05, cor = FALSE)
 }
 \arguments{
 \item{a}{A vector of the exposed + disease + count for each stratum}
@@ -18,6 +18,8 @@ odds_ratio_CMH(a, b, c, d, ci = FALSE, alpha = 0.05)
 \item{ci}{Return a confidence interval instead of point estimate}
 
 \item{alpha}{The confidence level of the interval}
+
+\item{cor}{Continuity correction}
 }
 \description{
 This function allows for odds ratio calculations across two strata.
