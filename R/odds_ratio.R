@@ -7,21 +7,30 @@
 #' @param d The exposed - disease - count
 #' @param ci Return a confidence interval instead of point estimate
 #' @param alpha The confidence level of the interval
+#' @param paired Is the study design based on matched pairs?
 #' @keywords odds-ratio
 #' @export
 #' @examples
 #' odds_ratio(30,40,10,50)
 #' odds_ratio(30,40,10,50,ci = TRUE)
 
-odds_ratio <- function(a,b,c,d,ci = FALSE,alpha = 0.05)
+odds_ratio <- function(a,b,c,d,ci = FALSE,alpha = 0.05,paired = FALSE)
 {
-
+  library(usefulR)
   if(!all(c(a,b,c,d)>0))
   {
     stop("Must have positive cell counts")
   }
 
-  or = (a*d)/(b*c)
+  if(paired)
+  {
+    or = b/c
+  }
+  else
+  {
+    or = (a*d)/(b*c)
+  }
+
 
   if(!ci)
   {
@@ -29,8 +38,17 @@ odds_ratio <- function(a,b,c,d,ci = FALSE,alpha = 0.05)
   }
   else
   {
-    se_lnor = sqrt(1/a+1/b+1/c+1/d)
-    z_crit = qnorm(1-alpha/2)
-    return(exp(pm(log(or),z_crit*se_lnor)))
+    if(paired)
+    {
+      se_lnor = sqrt(1/a+1/b+1/c+1/d)
+      z_crit = qnorm(1-alpha/2)
+      return(exp(pm(log(or),z_crit*se_lnor)))
+    }
+    else
+    {
+      se_lnor = sqrt(1/b+1/c)
+      z_crit = qnorm(1-alpha/2)
+      return(exp(pm(log(or),z_crit*se_lnor)))
+    }
   }
 }

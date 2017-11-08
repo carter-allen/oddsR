@@ -4,7 +4,7 @@
 \alias{odds_ratio}
 \title{A simple function for calculating odds ratios from 2x2 tables}
 \usage{
-odds_ratio(a, b, c, d, ci = FALSE, alpha = 0.05)
+odds_ratio(a, b, c, d, ci = FALSE, alpha = 0.05, paired = FALSE)
 }
 \arguments{
 \item{a}{The exposed + disease + count}
@@ -18,6 +18,8 @@ odds_ratio(a, b, c, d, ci = FALSE, alpha = 0.05)
 \item{ci}{Return a confidence interval instead of point estimate}
 
 \item{alpha}{The confidence level of the interval}
+
+\item{paired}{Is the study design based on matched pairs?}
 }
 \description{
 This function allows for odds ratio calculations.
