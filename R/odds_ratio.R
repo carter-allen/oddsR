@@ -38,7 +38,7 @@ odds_ratio <- function(a,b,c,d,ci = FALSE,alpha = 0.05,paired = FALSE)
   }
   else
   {
-    if(paired)
+    if(!paired)
     {
       se_lnor = sqrt(1/a+1/b+1/c+1/d)
       z_crit = qnorm(1-alpha/2)
